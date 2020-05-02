@@ -1,14 +1,37 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.biogranja.model;
-
-/**
- *
- * @author Admin
- */
 public class AvePostura {
+    private int idAve;
+    private boolean colocandoOvo;
+    private String historicoPostura[];
+    private int controlhist = 0;
+
+    public AvePostura(int idAve) {
+        this.idAve = idAve;
+    }
+
+    public int getIdAve() {
+        return idAve;
+    }
+
+    public void setIdAve(int idAve) {
+        this.idAve = idAve;
+    }
+
+    public boolean isColocandoOvo() {
+        return colocandoOvo;
+    }
+
+    public void setColocandoOvo(boolean colocandoOvo) {
+        this.colocandoOvo = colocandoOvo;
+    }
+
+    public String[] getHistoricoPostura() {
+        return historicoPostura;
+    }
+
+    public void adicionarHistorico(String hist) {
+        historicoPostura[controlhist] = hist;
+    }
+    
     
 }

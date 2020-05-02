@@ -72,4 +72,8 @@ public class Gestor {
     private void atualizarGalinheiroCorte(){
         
     }
+    
+    private String relatorioGalinheiros() {
+        return "a";
+    }
 }

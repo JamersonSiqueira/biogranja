@@ -1,11 +1,14 @@
 package br.com.biogranja.model;
 
 import java.util.Date;
+import br.com.biogranja.model.Aves;
 
 public class Carga {
     private int idCarga;
-    private Aves[] listaCorte[];
-    private Aves[] listaPostura[];
+    private int ultimocorte=0;
+    private int ultimopostura=0;
+    private Aves listaCorte[];
+    private Aves listaPostura[];
     private Date dataRecebida;
 
     public Carga(int idCarga, Date dataRecebida) {
@@ -21,19 +24,19 @@ public class Carga {
         this.idCarga = idCarga;
     }
 
-    public Aves[][] getListaCorte() {
+    public Aves[] getListaCorte() {
         return listaCorte;
     }
 
-    public void setListaCorte(Aves[][] listaCorte) {
+    public void setListaCorte(Aves[] listaCorte) {
         this.listaCorte = listaCorte;
     }
 
-    public Aves[][] getListaPostura() {
+    public Aves[] getListaPostura() {
         return listaPostura;
     }
 
-    public void setListaPostura(Aves[][] listaPostura) {
+    public void setListaPostura(Aves[] listaPostura) {
         this.listaPostura = listaPostura;
     }
 
@@ -46,10 +49,12 @@ public class Carga {
     }
             
     public void addListaCorte(Aves ave) {
-        
+        listaCorte[ultimocorte]=ave;
+        ultimocorte++;
     }    
 
     public void addListaPostura(Aves ave) {
-        
+        listaPostura[ultimopostura]=ave;
+        ultimopostura++;
     }      
 }

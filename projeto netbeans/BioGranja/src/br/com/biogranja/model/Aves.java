@@ -1,15 +1,23 @@
 package br.com.biogranja.model;
+
+import java.util.Random;
+
 public class Aves {
     private int idAve;
     private String dest;
     private float peso;
 
-    public Aves(int idAve, String dest, float peso) {
-        this.idAve = idAve;
+    public static int gerarId() {
+        Random random = new Random();
+        return random.nextInt((999999 - 100000) + 1) + 100000;
+    }
+    
+    public Aves(String dest, float peso) {
+        this.idAve = gerarId();
         this.dest = dest;
         this.peso = peso;
     }
-
+    
     public int getIdAve() {
         return idAve;
     }
