@@ -52,5 +52,9 @@ public class controlCarregamentos {
         }
         
         return null;
+   }
+    
+    public int geraID(){
+        return cargas.size();
     }
 }

@@ -5,6 +5,10 @@
  */
 package br.com.biogranja.view;
 
+import br.com.biogranja.control.controlCarregamentos;
+import br.com.biogranja.model.Aves;
+import br.com.biogranja.model.Carga;
+import java.util.Date;
 import java.util.Random;
 import javax.swing.JOptionPane;
 
@@ -13,16 +17,25 @@ import javax.swing.JOptionPane;
  * @author Admin
  */
 public class viewInterno extends javax.swing.JFrame {
-
+controlCarregamentos carga = new controlCarregamentos();
     /**
      * Creates new form viewInterno
      */
     public viewInterno() {
         initComponents();
         painelFunc.setVisible(false);
-        painelGestor.setVisible(false);
+        painelGestor.setVisible(false);  
     }
 
+    public String converterListaCarga(Aves lista[]){
+        String txt="";
+        int x=0; 
+        while(lista[x]!=null){
+            txt+=lista[x].toString()+"\n";
+            x++;
+        }
+        return txt;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,8 +52,6 @@ public class viewInterno extends javax.swing.JFrame {
         painelFunc = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         btnNovaCarga = new javax.swing.JButton();
-        txtBuscaCarga = new javax.swing.JTextField();
-        btnBuscaCarga = new javax.swing.JButton();
         jLabel9 = new javax.swing.JLabel();
         txtPesoNovaAve = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
@@ -48,13 +59,15 @@ public class viewInterno extends javax.swing.JFrame {
         scrPanListaCorte = new javax.swing.JScrollPane();
         txtListaCorte = new javax.swing.JTextArea();
         scrPanListaPostura = new javax.swing.JScrollPane();
-        txtListaCorte1 = new javax.swing.JTextArea();
+        txtListaPostura = new javax.swing.JTextArea();
         btnNovaAveCorte = new javax.swing.JButton();
         btnNovaAvePostura = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         txtIDCarga = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        btnAtt = new javax.swing.JButton();
+        btnFecharFunc = new javax.swing.JButton();
         painelGestor = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -92,11 +105,9 @@ public class viewInterno extends javax.swing.JFrame {
         jLabel1.setText("Área de Funcionário");
 
         btnNovaCarga.setText("Nova Carga");
-
-        btnBuscaCarga.setText("Buscar Carga");
-        btnBuscaCarga.addActionListener(new java.awt.event.ActionListener() {
+        btnNovaCarga.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBuscaCargaActionPerformed(evt);
+                btnNovaCargaActionPerformed(evt);
             }
         });
 
@@ -108,76 +119,103 @@ public class viewInterno extends javax.swing.JFrame {
         jLabel10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
 
         txtListaCorte.setColumns(20);
-        txtListaCorte.setFont(new java.awt.Font("Monospaced", 0, 12)); // NOI18N
+        txtListaCorte.setFont(new java.awt.Font("Monospaced", 0, 11)); // NOI18N
+        txtListaCorte.setLineWrap(true);
         txtListaCorte.setRows(5);
         scrPanListaCorte.setViewportView(txtListaCorte);
 
-        txtListaCorte1.setColumns(20);
-        txtListaCorte1.setRows(5);
-        scrPanListaPostura.setViewportView(txtListaCorte1);
+        txtListaPostura.setColumns(20);
+        txtListaPostura.setFont(new java.awt.Font("Monospaced", 0, 11)); // NOI18N
+        txtListaPostura.setLineWrap(true);
+        txtListaPostura.setRows(5);
+        scrPanListaPostura.setViewportView(txtListaPostura);
 
         btnNovaAveCorte.setText("Corte");
+        btnNovaAveCorte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovaAveCorteActionPerformed(evt);
+            }
+        });
 
         btnNovaAvePostura.setText("Postura");
+        btnNovaAvePostura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNovaAvePosturaActionPerformed(evt);
+            }
+        });
 
-        jLabel11.setText("Carga selecionada");
+        jLabel11.setText("ID Carga");
 
-        txtIDCarga.setText("0");
+        txtIDCarga.setText("S/ID");
 
         jLabel12.setText("Aves de Corte");
 
         jLabel13.setText("Aves de Postura");
+
+        btnAtt.setText("ATT");
+        btnAtt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAttActionPerformed(evt);
+            }
+        });
+
+        btnFecharFunc.setText("Fechar Janela");
+        btnFecharFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnFecharFuncActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout painelFuncLayout = new javax.swing.GroupLayout(painelFunc);
         painelFunc.setLayout(painelFuncLayout);
         painelFuncLayout.setHorizontalGroup(
             painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelFuncLayout.createSequentialGroup()
-                .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelFuncLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelFuncLayout.createSequentialGroup()
-                                .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(painelFuncLayout.createSequentialGroup()
-                                        .addComponent(btnNovaCarga)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(btnBuscaCarga))
-                                    .addGroup(painelFuncLayout.createSequentialGroup()
-                                        .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel9)
-                                            .addComponent(txtPesoNovaAve, javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(btnNovaAvePostura)
-                                            .addComponent(btnNovaAveCorte))))
-                                .addGap(46, 46, 46))
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelFuncLayout.createSequentialGroup()
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFuncLayout.createSequentialGroup()
-                                        .addComponent(txtIDCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(26, 26, 26))))
-                            .addGroup(painelFuncLayout.createSequentialGroup()
-                                .addComponent(txtBuscaCarga, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(76, 76, 76)))))
                 .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelFuncLayout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFuncLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnNovaCarga)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(scrPanListaCorte, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(painelFuncLayout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(txtIDCarga, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel11))
+                        .addGap(32, 32, 32))
+                    .addGroup(painelFuncLayout.createSequentialGroup()
+                        .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jSeparator3, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(painelFuncLayout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel9)
+                                        .addComponent(txtPesoNovaAve, javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(btnNovaAvePostura)
+                                        .addComponent(btnNovaAveCorte))
+                                    .addGap(23, 23, 23)))
+                            .addGroup(painelFuncLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(btnFecharFunc))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFuncLayout.createSequentialGroup()
+                        .addComponent(btnAtt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(scrPanListaPostura, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52))
-                    .addGroup(painelFuncLayout.createSequentialGroup()
-                        .addGap(65, 65, 65)
+                        .addComponent(scrPanListaCorte, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(scrPanListaPostura, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFuncLayout.createSequentialGroup()
                         .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(162, 162, 162)
                         .addComponent(jLabel13)
-                        .addGap(113, 113, 113))))
+                        .addGap(101, 101, 101))))
         );
         painelFuncLayout.setVerticalGroup(
             painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,41 +223,43 @@ public class viewInterno extends javax.swing.JFrame {
                 .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelFuncLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel1))
+                        .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12)
+                            .addComponent(jLabel13)))
+                    .addComponent(jLabel1))
+                .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelFuncLayout.createSequentialGroup()
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtIDCarga)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(txtBuscaCarga, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnNovaCarga)
-                    .addComponent(btnBuscaCarga))
-                .addGap(4, 4, 4)
-                .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(4, 4, 4)
-                .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(painelFuncLayout.createSequentialGroup()
-                        .addComponent(jLabel9)
                         .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelFuncLayout.createSequentialGroup()
-                                .addGap(2, 2, 2)
-                                .addComponent(btnNovaAveCorte))
+                                .addComponent(jLabel11)
+                                .addGap(7, 7, 7)
+                                .addComponent(txtIDCarga)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFuncLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnNovaCarga)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnFecharFunc)
+                        .addGap(13, 13, 13)
+                        .addComponent(jSeparator3, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, 0)
+                        .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(painelFuncLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtPesoNovaAve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel10)
-                        .addGap(4, 4, 4))
-                    .addComponent(btnNovaAvePostura))
-                .addContainerGap())
-            .addGroup(painelFuncLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel13))
-                .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel9)
+                                    .addComponent(btnAtt))
+                                .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(painelFuncLayout.createSequentialGroup()
+                                        .addGap(2, 2, 2)
+                                        .addComponent(btnNovaAveCorte))
+                                    .addGroup(painelFuncLayout.createSequentialGroup()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtPesoNovaAve, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jLabel10)
+                                .addGap(4, 4, 4))
+                            .addComponent(btnNovaAvePostura))
+                        .addContainerGap())
                     .addComponent(scrPanListaPostura, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(scrPanListaCorte)))
         );
@@ -322,14 +362,11 @@ public class viewInterno extends javax.swing.JFrame {
                     .addComponent(btnAccGest, javax.swing.GroupLayout.Alignment.TRAILING))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel7)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(btnAccFunc))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(196, 196, 196))
+                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAccFunc))
+                .addGap(206, 206, 206))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -373,19 +410,51 @@ public class viewInterno extends javax.swing.JFrame {
 
     private void btnAccFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAccFuncActionPerformed
         painelFunc.setVisible(true);
+        txtListaCorte.setEditable(false);
+        txtListaPostura.setEditable(false);
     }//GEN-LAST:event_btnAccFuncActionPerformed
 
-    private void btnBuscaCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaCargaActionPerformed
-        //Teste ID Randomico p/ aves
-        int rand =0;
-        String numeros="";
-        do{
-        Random random = new Random();
-        numeros+=random.nextInt((999999 - 100000) + 1) + 100000+"\n";
-        rand++;
-        }while (rand<5);
-        txtListaCorte.setText(numeros);
-    }//GEN-LAST:event_btnBuscaCargaActionPerformed
+    private void btnNovaCargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaCargaActionPerformed
+        //txtListaCorte.setText(Integer.toString());
+        Date dt = new Date();
+        Carga cargtmp = new Carga(carga.geraID(),dt);
+        carga.cadastrarCarga(cargtmp);
+        txtIDCarga.setText(Integer.toString(cargtmp.getIdCarga()));
+        txtListaCorte.setText("Lista vazia");
+        txtListaPostura.setText("Lista vazia");
+    }//GEN-LAST:event_btnNovaCargaActionPerformed
+
+    private void btnAttActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttActionPerformed
+        if(txtIDCarga.getText()!="S/ID"){
+            if(txtListaCorte.getText().equals("Lista vazia")&&txtListaPostura.getText().equals("Lista vazia")){
+                JOptionPane.showMessageDialog(null, "Carga Vazia !");
+            }
+        txtListaCorte.setText(converterListaCarga(carga.buscarCarga(Integer.parseInt(txtIDCarga.getText())).getListaCorte()));
+        }
+        else {
+            JOptionPane.showMessageDialog(null, "Não há carga selecionada!");
+        }
+    }//GEN-LAST:event_btnAttActionPerformed
+
+    private void btnNovaAveCorteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaAveCorteActionPerformed
+        Aves avefenix = new Aves("Corte", Double.parseDouble(txtPesoNovaAve.getText()));
+        carga.buscarCarga(Integer.parseInt(txtIDCarga.getText())).addListaCorte(avefenix);
+        txtListaCorte.setText(converterListaCarga(carga.buscarCarga(Integer.parseInt(txtIDCarga.getText())).getListaCorte()));
+    }//GEN-LAST:event_btnNovaAveCorteActionPerformed
+
+    private void btnNovaAvePosturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovaAvePosturaActionPerformed
+        Aves avefenix = new Aves("Postura", Double.parseDouble(txtPesoNovaAve.getText()));
+        carga.buscarCarga(Integer.parseInt(txtIDCarga.getText())).addListaPostura(avefenix);
+        txtListaPostura.setText(converterListaCarga(carga.buscarCarga(Integer.parseInt(txtIDCarga.getText())).getListaPostura()));
+    }//GEN-LAST:event_btnNovaAvePosturaActionPerformed
+
+    private void btnFecharFuncActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharFuncActionPerformed
+        painelFunc.setVisible(false);
+        txtIDCarga.setText("S/ID");
+        txtListaCorte.setText("");
+        txtListaPostura.setText("");
+        txtPesoNovaAve.setText("");
+    }//GEN-LAST:event_btnFecharFuncActionPerformed
 
     /**
      * @param args the command line arguments
@@ -420,12 +489,14 @@ public class viewInterno extends javax.swing.JFrame {
                 new viewInterno().setVisible(true);
             }
         });
+    
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAccFunc;
     private javax.swing.JButton btnAccGest;
-    private javax.swing.JButton btnBuscaCarga;
+    private javax.swing.JButton btnAtt;
+    private javax.swing.JButton btnFecharFunc;
     private javax.swing.JButton btnNovaAveCorte;
     private javax.swing.JButton btnNovaAvePostura;
     private javax.swing.JButton btnNovaCarga;
@@ -454,11 +525,10 @@ public class viewInterno extends javax.swing.JFrame {
     private javax.swing.JPanel painelGestor;
     private javax.swing.JScrollPane scrPanListaCorte;
     private javax.swing.JScrollPane scrPanListaPostura;
-    private javax.swing.JTextField txtBuscaCarga;
     private javax.swing.JTextField txtID;
     private javax.swing.JLabel txtIDCarga;
     private javax.swing.JTextArea txtListaCorte;
-    private javax.swing.JTextArea txtListaCorte1;
+    private javax.swing.JTextArea txtListaPostura;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtPesoNovaAve;
     // End of variables declaration//GEN-END:variables

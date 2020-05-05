@@ -7,8 +7,8 @@ public class Carga {
     private int idCarga;
     private int ultimocorte=0;
     private int ultimopostura=0;
-    private Aves listaCorte[];
-    private Aves listaPostura[];
+    private Aves[] listaCorte = new Aves[60];
+    private Aves[] listaPostura = new Aves[60];
     private Date dataRecebida;
 
     public Carga(int idCarga, Date dataRecebida) {

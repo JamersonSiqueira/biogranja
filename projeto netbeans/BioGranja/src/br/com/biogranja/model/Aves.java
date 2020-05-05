@@ -5,14 +5,14 @@ import java.util.Random;
 public class Aves {
     private int idAve;
     private String dest;
-    private float peso;
+    private double peso;
 
     public static int gerarId() {
         Random random = new Random();
         return random.nextInt((999999 - 100000) + 1) + 100000;
     }
     
-    public Aves(String dest, float peso) {
+    public Aves(String dest, double peso) {
         this.idAve = gerarId();
         this.dest = dest;
         this.peso = peso;
@@ -34,13 +34,19 @@ public class Aves {
         this.dest = dest;
     }
 
-    public float getPeso() {
+    public double getPeso() {
         return peso;
     }
 
     public void setPeso(float peso) {
         this.peso = peso;
     }
+
+    @Override
+    public String toString() {
+        return "Cod. Ave: "+idAve+", Peso: " + peso;
+    }
+    
     
     
 }
