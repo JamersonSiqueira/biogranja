@@ -1,7 +1,12 @@
 package br.com.biogranja.model;
 public class AveCorte {
     private int idAve;
-    private float peso;
+    private double peso;
+
+    public AveCorte(Aves ave) {
+        this.idAve = ave.getIdAve();
+        this.peso = ave.getPeso();
+    }
 
     public int getIdAve() {
         return idAve;
@@ -11,12 +16,17 @@ public class AveCorte {
         this.idAve = idAve;
     }
 
-    public float getPeso() {
+    public double getPeso() {
         return peso;
     }
 
-    public void setPeso(float peso) {
+    public void setPeso(double peso) {
         this.peso = peso;
+    }
+
+    @Override
+    public String toString() {
+        return "Ave: "+ idAve + ", Peso: " + peso;
     }
     
 }

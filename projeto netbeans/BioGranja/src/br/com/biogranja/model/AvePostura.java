@@ -5,8 +5,8 @@ public class AvePostura {
     private String historicoPostura[];
     private int controlhist = 0;
 
-    public AvePostura(int idAve) {
-        this.idAve = idAve;
+    public AvePostura(Aves ave) {
+        this.idAve = ave.getIdAve();
     }
 
     public int getIdAve() {
