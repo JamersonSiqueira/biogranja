@@ -8,9 +8,11 @@ public class GalinheiroCorte {
     AveCorte listaAves[];
     double qtdRacao;
     int ultimaave=0;
+    int ultimogalinheiro=0;
 
-    public GalinheiroCorte(int idGalinheiro) {
-        this.idGalinheiro = idGalinheiro;
+    public GalinheiroCorte() {
+        this.idGalinheiro = ultimogalinheiro;
+        ultimogalinheiro++;
     }
 
     public int getIdGalinheiro() {
@@ -84,6 +86,18 @@ public class GalinheiroCorte {
         this.qtdRacao=0;
             }
         }
+    
+    public void addCarga(Carga carg){
+        Aves av[]=carg.getListaCorte();
+        AveCorte corte;
+        int x=0;
+        while(av[x]!=null){
+            corte=new AveCorte(av[x]);
+            addAve(corte);
+            x++;
+            corte=null;
+        }
+    }
     
     @Override
     public String toString() {

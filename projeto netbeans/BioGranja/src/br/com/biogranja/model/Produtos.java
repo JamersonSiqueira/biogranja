@@ -1,51 +1,44 @@
-
-//NECESSÁRIO INICIAR !
-
 package br.com.biogranja.model;
 
+import java.util.ArrayList;
+
 public class Produtos {
-    
-    int id;
-    String nome;
-    String dataAdmissao;
-    
-    public Produtos(){
-        
-    }
-    public Produtos(int id, String nome, String dataAdmissao) {
-        this.id = id;
-        this.nome = nome;
-        this.dataAdmissao = dataAdmissao;
+  
+    ArrayList <AveCorte> listaAves = new ArrayList<>();
+    int qtdOvos=0;
+    double total;
+
+    public ArrayList<AveCorte> getListaAves() {
+        return listaAves;
     }
 
-    public int getId() {
-        return id;
+    public void addListaAves(AveCorte ave) {
+        listaAves.add(ave);
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getQtdOvos() {
+        return qtdOvos;
     }
 
-    public String getNome() {
-        return nome;
+    public void addQtdOvos(int qtdOvos) {
+        this.qtdOvos += qtdOvos;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getDataAdmissao() {
-        return dataAdmissao;
-    }
-
-    public void setDataAdmissao(String dataAdmissao) {
-        this.dataAdmissao = dataAdmissao;
-    }
-
-    @Override
-    public String toString() {
-        return "Produtos{" + "id=" + this.getId()+ ", nome=" + this.getNome() + ", dataAdmissao=" + this.getDataAdmissao() + '}';
+    public String listarAves(){
+        String s="";
+        for (int x=0;x<this.listaAves.size();x++){
+            s+=this.listaAves.get(x).toString();
+        }
+        return s;
     }
     
-    
+    public double attValor(){
+        double valor=0;
+        for (int i=0;i<listaAves.size();i++){
+            valor += listaAves.get(i).getPeso()*6;
+        }
+        valor += (qtdOvos*0.33);
+        this.total=valor;
+        return total;
+    }
 }

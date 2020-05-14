@@ -48,8 +48,6 @@ controlCarregamentos carga = new controlCarregamentos();
     private void initComponents() {
 
         jLabel8 = new javax.swing.JLabel();
-        btnAccGest = new javax.swing.JButton();
-        btnAccFunc = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         painelFunc = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -109,8 +107,11 @@ controlCarregamentos carga = new controlCarregamentos();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator2 = new javax.swing.JSeparator();
-        txtID = new javax.swing.JTextField();
+        painelLogin = new javax.swing.JPanel();
+        btnAccGest = new javax.swing.JButton();
+        btnAccFunc = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txtPass = new javax.swing.JPasswordField();
 
@@ -118,20 +119,6 @@ controlCarregamentos carga = new controlCarregamentos();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-
-        btnAccGest.setText("Acesso Gestor");
-        btnAccGest.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAccGestActionPerformed(evt);
-            }
-        });
-
-        btnAccFunc.setText("Acesso Funcionário");
-        btnAccFunc.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAccFuncActionPerformed(evt);
-            }
-        });
 
         painelFunc.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -212,8 +199,8 @@ controlCarregamentos carga = new controlCarregamentos();
             painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelFuncLayout.createSequentialGroup()
                 .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFuncLayout.createSequentialGroup()
-                        .addContainerGap()
+                    .addGroup(painelFuncLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
                         .addComponent(btnNovaCarga)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -240,8 +227,8 @@ controlCarregamentos carga = new controlCarregamentos();
                             .addGroup(painelFuncLayout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel1)
-                                    .addComponent(btnFecharFunc))))
+                                    .addComponent(btnFecharFunc)
+                                    .addComponent(jLabel1))))
                         .addGap(18, 18, Short.MAX_VALUE)))
                 .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFuncLayout.createSequentialGroup()
@@ -260,13 +247,13 @@ controlCarregamentos carga = new controlCarregamentos();
         painelFuncLayout.setVerticalGroup(
             painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(painelFuncLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(painelFuncLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel12)
-                            .addComponent(jLabel13)))
-                    .addComponent(jLabel1))
+                    .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel12)
+                        .addComponent(jLabel1))
+                    .addComponent(jLabel13))
+                .addGap(0, 0, 0)
                 .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painelFuncLayout.createSequentialGroup()
                         .addGroup(painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,7 +261,7 @@ controlCarregamentos carga = new controlCarregamentos();
                                 .addComponent(jLabel11)
                                 .addGap(7, 7, 7)
                                 .addComponent(txtIDCarga)
-                                .addGap(0, 13, Short.MAX_VALUE))
+                                .addGap(0, 26, Short.MAX_VALUE))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelFuncLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnNovaCarga)))
@@ -597,58 +584,92 @@ controlCarregamentos carga = new controlCarregamentos();
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        txtID.addActionListener(new java.awt.event.ActionListener() {
+        painelLogin.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnAccGest.setText("Acesso Gestor");
+        btnAccGest.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtIDActionPerformed(evt);
+                btnAccGestActionPerformed(evt);
+            }
+        });
+
+        btnAccFunc.setText("Acesso Funcionário");
+        btnAccFunc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAccFuncActionPerformed(evt);
             }
         });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel6.setText("ID");
 
+        txtID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtIDActionPerformed(evt);
+            }
+        });
+
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel7.setText("Senha");
+
+        javax.swing.GroupLayout painelLoginLayout = new javax.swing.GroupLayout(painelLogin);
+        painelLogin.setLayout(painelLoginLayout);
+        painelLoginLayout.setHorizontalGroup(
+            painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLoginLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLoginLayout.createSequentialGroup()
+                        .addComponent(btnAccFunc)
+                        .addGap(32, 32, 32)
+                        .addComponent(btnAccGest))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLoginLayout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(24, 24, 24)))
+                .addGap(244, 244, 244))
+        );
+        painelLoginLayout.setVerticalGroup(
+            painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLoginLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel7)
+                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAccGest)
+                    .addComponent(btnAccFunc))
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSeparator1)
             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(painelFunc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnAccGest, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel7)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnAccFunc))
-                .addGap(206, 206, 206))
             .addComponent(painelGestor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(painelLogin, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jSeparator1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7)
-                    .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(painelLogin, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAccGest)
-                    .addComponent(btnAccFunc))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(painelFunc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 5, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -833,6 +854,7 @@ controlCarregamentos carga = new controlCarregamentos();
     private javax.swing.JTextField jTextField7;
     private javax.swing.JPanel painelFunc;
     private javax.swing.JPanel painelGestor;
+    private javax.swing.JPanel painelLogin;
     private javax.swing.JPanel panMoverCorte;
     private javax.swing.JPanel panMoverPostura;
     private javax.swing.JScrollPane scrPanListaCorte;

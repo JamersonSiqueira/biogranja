@@ -1,59 +1,77 @@
-
 package br.com.biogranja.model;
 
+import java.util.Random;
+
 public class Venda {
-  String listaAvesVendas;
-  int qtdOvos;
-  String Cliente;
-  String dadosPagos;
+  int id;
+  Produtos prod;
+  Cliente cli;
+  String dadosCartao;
+  String endereco;
+  double valor;
   
-  public Venda(){
+  public Venda(Produtos p,Cliente c,String cartao, String end){
+      Random random = new Random();
+      this.id= random.nextInt((999999 - 100000) + 1) + 100000;
+      this.prod=p;
+      this.cli = c;
+      this.dadosCartao=cartao;
+      this.endereco=end;
       
+      this.valor=(prod.attValor()+10);
   }
 
-    public Venda(String listaAvesVendas, int qtdOvos, String Cliente, String dadosPagos) {
-        this.listaAvesVendas = listaAvesVendas;
-        this.qtdOvos = qtdOvos;
-        this.Cliente = Cliente;
-        this.dadosPagos = dadosPagos;
+    public int getId() {
+        return id;
+    }
+    
+      public String itenstotais(){
+        String s=this.prod.listarAves();
+        s+="------------------------------------------------------------"
+                + "\nQtd ovos:"+this.prod.getQtdOvos();
+        s+="------------------------------------------------------------"
+                + "\nFrete Fixo: R$10,00 |  Total: R$"+this.valor;
+        return s;
     }
 
-    public String getListaAvesVendas() {
-        return listaAvesVendas;
+    public Produtos getProd() {
+        return prod;
     }
 
-    public void setListaAvesVendas(String listaAvesVendas) {
-        this.listaAvesVendas = listaAvesVendas;
+    public void setProd(Produtos prod) {
+        this.prod = prod;
     }
 
-    public int getQtdOvos() {
-        return qtdOvos;
+    public Cliente getCli() {
+        return cli;
     }
 
-    public void setQtdOvos(int qtdOvos) {
-        this.qtdOvos = qtdOvos;
+    public void setCli(Cliente cli) {
+        this.cli = cli;
     }
 
-    public String getCliente() {
-        return Cliente;
+    public String getDadosCartao() {
+        return dadosCartao;
     }
 
-    public void setCliente(String Cliente) {
-        this.Cliente = Cliente;
+    public void setDadosCartao(String dadosCartao) {
+        this.dadosCartao = dadosCartao;
     }
 
-    public String getDadosPagos() {
-        return dadosPagos;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setDadosPagos(String dadosPagos) {
-        this.dadosPagos = dadosPagos;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
-    @Override
-    public String toString() {
-        return "Venda{" + "listaAvesVendas=" + this.getListaAvesVendas() + ", qtdOvos=" + this.getQtdOvos() + ", Cliente=" + this.getCliente() + ", dadosPagos=" + this.getDadosPagos() + '}';
+    public double getValor() {
+        return valor;
     }
-  
+
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
     
 }

@@ -54,6 +54,7 @@ public class Cliente {
     
     @Override
     public String toString() {
-        return "Cliente{" + "idCliente=" + this.getIdCliente() + ", nomeCliente=" + this.getNomeCliente() + ", endereco=" + this.getEndereco() + ", cpf=" + this.getCpf() + '}';
+        return "ID Cliente - " + this.getIdCliente() + "\nNome - " + this.getNomeCliente()
+                + "\nEndereco - " + this.getEndereco()+ "\nCPF - " + this.getCpf();
     }
 }
