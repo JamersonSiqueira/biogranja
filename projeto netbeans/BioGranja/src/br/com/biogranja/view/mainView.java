@@ -16,6 +16,7 @@ public class mainView extends javax.swing.JFrame {
      */
     public mainView() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -30,8 +31,10 @@ public class mainView extends javax.swing.JFrame {
         btnInterno = new javax.swing.JButton();
         btnClient = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         btnInterno.setText("Acessar como Funcionário");
         btnInterno.addActionListener(new java.awt.event.ActionListener() {
@@ -39,6 +42,7 @@ public class mainView extends javax.swing.JFrame {
                 btnInternoActionPerformed(evt);
             }
         });
+        getContentPane().add(btnInterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
 
         btnClient.setText("Acessar como Cliente");
         btnClient.addActionListener(new java.awt.event.ActionListener() {
@@ -46,39 +50,15 @@ public class mainView extends javax.swing.JFrame {
                 btnClientActionPerformed(evt);
             }
         });
+        getContentPane().add(btnClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
 
+        jLabel1.setBackground(new java.awt.Color(102, 255, 204));
         jLabel1.setFont(new java.awt.Font("Pixel-Art", 0, 18)); // NOI18N
-        jLabel1.setText("Menu inicial");
+        jLabel1.setText("Bio Granja");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnClient)
-                .addGap(131, 131, 131))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addComponent(btnInterno))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(150, 150, 150)
-                        .addComponent(jLabel1)))
-                .addContainerGap(120, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(btnClient)
-                .addGap(27, 27, 27)
-                .addComponent(btnInterno)
-                .addGap(37, 37, 37))
-        );
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/biogranja/images/sas.png"))); // NOI18N
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 230));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -130,5 +110,6 @@ public class mainView extends javax.swing.JFrame {
     private javax.swing.JButton btnClient;
     private javax.swing.JButton btnInterno;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

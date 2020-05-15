@@ -1,18 +1,28 @@
 package br.com.biogranja.model;
 
+import java.util.Random;
+
 public class Cliente {
 
     int idCliente;
     String nomeCliente;
     String endereco;
-    int cpf;
-
+    String cpf;
 
     public Cliente() {
     }
 
-    public Cliente(int idCliente, String nomeCliente, String endereco, int cpf) {
-        this.idCliente = idCliente;
+
+    public Cliente(Cliente cli) {
+        this.idCliente = cli.idCliente;
+        this.nomeCliente = cli.nomeCliente;
+        this.endereco = cli.endereco;
+        this.cpf = cli.cpf;
+    }
+
+    public Cliente(String nomeCliente, String endereco, String cpf) {
+        Random random = new Random();
+        this.idCliente = random.nextInt((999999 - 100000) + 1) + 100000;
         this.nomeCliente = nomeCliente;
         this.endereco = endereco;
         this.cpf = cpf;
@@ -43,11 +53,11 @@ public class Cliente {
         this.endereco = endereco;
     }
 
-    public int getCpf() {
+    public String getCpf() {
         return cpf;
     }
 
-    public void setCpf(int cpf) {
+    public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 

@@ -4,19 +4,26 @@
  * and open the template in the editor.
  */
 package br.com.biogranja.view;
+import br.com.biogranja.control.controlClientes;
+import br.com.biogranja.model.Cliente;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Matheus
  */
 public class viewCliente extends javax.swing.JFrame {
-
+controlClientes clienteDAO = new controlClientes();
+Cliente c = new Cliente("João da Silva Brandão","Rua Eustácio nº 36\n"
+        + "Feira de Santana - BA\n"
+        + "44100000","12345678900");
     /**
      * Creates new form ComprarProdutos
      */
     public viewCliente() {
         initComponents();
         txtTitulo.setEditable(false);
+        clienteDAO.cadastrarCliente(c);
     }
 
     /**
@@ -36,7 +43,7 @@ public class viewCliente extends javax.swing.JFrame {
 
         jToggleButton1.setText("jToggleButton1");
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         panAcessoCliente.setBackground(new java.awt.Color(255, 255, 255));
         panAcessoCliente.setForeground(new java.awt.Color(255, 255, 255));
@@ -107,7 +114,11 @@ public class viewCliente extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCompraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCompraActionPerformed
-      new viewTelaVenda().setVisible(true);
+        String s=JOptionPane.showInputDialog(null,"Digite o CPF");
+        if(clienteDAO.buscarCliente(s)==null){
+            JOptionPane.showMessageDialog(null, "Cliente não encontrado !");
+        } else
+        new viewTelaVenda(clienteDAO.buscarCliente(s)).setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnCompraActionPerformed
 
