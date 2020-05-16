@@ -2,7 +2,7 @@ package br.com.biogranja.model;
 public class AvePostura {
     private int idAve;
     private boolean colocandoOvo;
-    private String historicoPostura[];
+    private String historicoPostura[] = new String[700];
     private int controlhist = 0;
 
     public AvePostura(Aves ave) {

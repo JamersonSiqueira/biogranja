@@ -5,14 +5,12 @@ import javax.swing.JOptionPane;
 
 public class GalinheiroCorte {
     int idGalinheiro;
-    AveCorte listaAves[];
+    AveCorte listaAves[]= new AveCorte[700];
     double qtdRacao;
     int ultimaave=0;
-    int ultimogalinheiro=0;
 
-    public GalinheiroCorte() {
-        this.idGalinheiro = ultimogalinheiro;
-        ultimogalinheiro++;
+    public GalinheiroCorte(int id) {
+        this.idGalinheiro = id;
     }
 
     public int getIdGalinheiro() {
@@ -23,8 +21,8 @@ public class GalinheiroCorte {
         this.idGalinheiro = idGalinheiro;
     }
 
-    public String getListaAves() {
-        return listaAves.toString();
+    public AveCorte[] getListaAves() {
+        return listaAves;
     }
 
     public void setListaAves(AveCorte[] listaAves) {
@@ -66,12 +64,26 @@ public class GalinheiroCorte {
         return s;
     }
     
+    public String listarAves(){
+        String s="";
+        int x=0;
+        while(listaAves[x]!=null){
+            s+="\n";
+            s+=listaAves[x].toString();
+            x++;
+        }
+        if(s.equals("")){
+            s+="Não existem aves";
+        }
+        return s;
+    }
+    
     public double getQtdRacao() {
         return qtdRacao;
     }
 
     public void setQtdRacao(double qtdRacao) {
-        this.qtdRacao = qtdRacao;
+        this.qtdRacao =+ qtdRacao;
         }
     
     public void alimentar(){
@@ -101,6 +113,8 @@ public class GalinheiroCorte {
     
     @Override
     public String toString() {
-        return "Galinheiro id:" + this.getIdGalinheiro() + ", listaAves=" + this.getListaAves() + ", qtdRacao=" + this.getQtdRacao() + '}';
+        return "----------------------------------------\n"
+                + "Galinheiro id:" + this.getIdGalinheiro() + 
+                "\nLista de aves:" + this.listarAves() + "\nQuantidade de Ração: " + this.getQtdRacao();
     } 
 }

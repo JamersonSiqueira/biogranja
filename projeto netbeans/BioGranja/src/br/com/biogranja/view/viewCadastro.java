@@ -284,7 +284,7 @@ Cliente cli;
         cli = new Cliente(txtNome.getText(),s,txtCPF.getText());
         jPanel2.setVisible(true);
         jPanel3.setVisible(true);
-        // TODO add your handling code here:
+        this.setVisible(false);
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void txtEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoActionPerformed

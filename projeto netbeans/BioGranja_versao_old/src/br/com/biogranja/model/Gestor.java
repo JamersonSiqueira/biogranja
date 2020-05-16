@@ -6,11 +6,21 @@ public class Gestor {
     private int id;
     private String nome;
     private Date dataAdmissao;
+    private String senha;
 
-    public Gestor(int id, String nome, Date dataAdmissao) {
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public Gestor(int id, String nome, Date dataAdmissao, String senha) {
         this.id = id;
         this.nome = nome;
         this.dataAdmissao = dataAdmissao;
+        this.senha = senha;
     }
     
     public int getId() {

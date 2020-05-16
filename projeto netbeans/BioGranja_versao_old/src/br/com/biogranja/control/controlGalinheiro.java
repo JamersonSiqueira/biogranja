@@ -93,4 +93,16 @@ public class controlGalinheiro {
         
         return null;
    }
+        public String listarpostura(){
+        String s="";
+        for(int y = 0; y < listapostura.size(); y++)
+        s+=listapostura.get(y).toString()+"\n";    
+        return s;
+    }
+        public String listarCorte(){
+        String s="";
+        for(int y = 0; y < listacorte.size(); y++)
+        s+=listacorte.get(y).toString()+"\n";    
+        return s;
+    }
 }

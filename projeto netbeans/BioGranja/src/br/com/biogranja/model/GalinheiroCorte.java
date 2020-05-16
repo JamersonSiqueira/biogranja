@@ -35,17 +35,21 @@ public class GalinheiroCorte {
     }
     
     public AveCorte abaterAve(int id) {
-          AveCorte ave=null;
-        if(listaAves[id].getPeso()<3.100){
+        AveCorte ave=null;
+        for(int z=0;z<ultimaave;z++){
+            if(listaAves[z].getIdAve()==id){
+                if(listaAves[z].getPeso()<3.100){
             JOptionPane.showMessageDialog(null, "Ave não tem peso suficiente!");
         }else {
-            ave=listaAves[id];
-            for (int x=id+1;x<ultimaave;x++){
+            ave=listaAves[z];
+            for (int x=z+1;x<ultimaave;x++){
                 listaAves[x-1]=listaAves[x];
             }
             listaAves[ultimaave-1]=null;
             ultimaave--; 
-        }  
+                }  
+            }
+        }
         return ave;
     }
     

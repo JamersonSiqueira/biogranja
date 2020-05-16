@@ -29,7 +29,8 @@ public class controlFuncionarios {
         {
             if(listafunc.get(x).getId() == f.getId())
             {
-                listafunc.remove(x); return true;
+                listafunc.remove(x); 
+                return true;
             }
         }
         
@@ -39,7 +40,10 @@ public class controlFuncionarios {
     public Funcionario buscarFuncionario(int x)
     {
         for(int y = 0; y < listafunc.size(); y++)
-        {
+        {   
+            if(listafunc.get(y) == null){
+                return null;
+            }
             if(listafunc.get(y).getId() == x)
             {
                 return listafunc.get(y);
@@ -48,4 +52,11 @@ public class controlFuncionarios {
         
         return null;
    }
+    
+    public String listarFuncionario(){
+        String s="";
+        for(int y = 0; y < listafunc.size(); y++)
+        s+=listafunc.get(y).toString();    
+        return s;
+    }
 }

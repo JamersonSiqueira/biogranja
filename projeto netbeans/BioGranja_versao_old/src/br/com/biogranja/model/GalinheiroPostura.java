@@ -4,7 +4,7 @@ package br.com.biogranja.model;
 public class GalinheiroPostura {
     
     int idGalinheiro;
-    AvePostura listaAves[];
+    AvePostura listaAves[] = new AvePostura[700];
     int ultimaave=0;
     int ultimogalinheiro=0;
     
@@ -64,8 +64,11 @@ public class GalinheiroPostura {
         return s;
     }
     
+    /*PARA FINALIZAR
     @Override
     public String toString() {
-        return "Galinheiro id:" + this.getIdGalinheiro() + ", Lista de Aves:" + this.getListaAves();
-    }
+        return "----------------------------------------\n"
+                + "Galinheiro id:" + this.getIdGalinheiro() + 
+                "\nLista de aves:" + this.listarAves() + "\nQuantidade de Ovos: " + this.getQtdOvos();
+    } */
 }

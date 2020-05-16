@@ -31,6 +31,7 @@ public class AvePostura {
 
     public void adicionarHistorico(String hist) {
         historicoPostura[controlhist] = hist;
+        controlhist++;
     }
     
     

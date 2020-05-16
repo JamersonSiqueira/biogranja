@@ -17,6 +17,7 @@ public class mainView extends javax.swing.JFrame {
     public mainView() {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setTitle("Bio Granja");
     }
 
     /**
@@ -42,7 +43,7 @@ public class mainView extends javax.swing.JFrame {
                 btnInternoActionPerformed(evt);
             }
         });
-        getContentPane().add(btnInterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 140, -1, -1));
+        getContentPane().add(btnInterno, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, -1));
 
         btnClient.setText("Acessar como Cliente");
         btnClient.addActionListener(new java.awt.event.ActionListener() {
@@ -50,14 +51,14 @@ public class mainView extends javax.swing.JFrame {
                 btnClientActionPerformed(evt);
             }
         });
-        getContentPane().add(btnClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 90, -1, -1));
+        getContentPane().add(btnClient, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 170, -1, -1));
 
-        jLabel1.setBackground(new java.awt.Color(102, 255, 204));
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Pixel-Art", 0, 18)); // NOI18N
-        jLabel1.setText("Bio Granja");
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, -1));
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/biogranja/images/Granja_red.png"))); // NOI18N
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 20, 310, 140));
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/biogranja/images/sas.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/biogranja/images/sas_white.png"))); // NOI18N
         getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 480, 230));
 
         pack();
