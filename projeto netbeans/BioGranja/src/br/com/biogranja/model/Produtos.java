@@ -8,8 +8,8 @@ public class Produtos {
     int qtdOvos=0;
     double total;
 
-    public ArrayList<AveCorte> getListaAves() {
-        return listaAves;
+    public int getListaAves() {
+        return listaAves.size();
     }
 
     public void addListaAves(AveCorte ave) {

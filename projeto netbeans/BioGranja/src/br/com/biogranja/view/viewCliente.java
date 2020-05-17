@@ -22,6 +22,8 @@ Cliente c = new Cliente("João da Silva Brandão","Rua Eustácio nº 36\n"
      */
     public viewCliente() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Acesso do cliente");
         txtTitulo.setEditable(false);
         clienteDAO.cadastrarCliente(c);
     }

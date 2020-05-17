@@ -37,6 +37,8 @@ int idpostura=0;
      */
     public viewInterno() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setTitle("Área de Controle");
         painelFunc.setVisible(false);
         painelGestor.setVisible(false);  
         panMoverCorte.setVisible(false);
