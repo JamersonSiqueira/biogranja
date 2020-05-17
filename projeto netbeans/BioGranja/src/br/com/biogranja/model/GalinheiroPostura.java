@@ -6,13 +6,21 @@ public class GalinheiroPostura {
     int idGalinheiro;
     AvePostura listaAves[] = new AvePostura[700];
     int ultimaave=0;
-    int ultimogalinheiro=0;
+    int qtdOvos=0;
     
-    public GalinheiroPostura() {
-        this.idGalinheiro = ultimogalinheiro;
-        ultimogalinheiro++;
+    public GalinheiroPostura(int id) {
+        this.idGalinheiro = id;
     }
 
+    public int getQtdOvos() {
+        return qtdOvos;
+    }
+
+    public void setQtdOvos(int qtdOvos) {
+        this.qtdOvos = qtdOvos;
+    }
+
+    
     public int getIdGalinheiro() {
         return idGalinheiro;
     }
@@ -37,7 +45,7 @@ public class GalinheiroPostura {
     public String histAve(int id){
         String s="";
         if(listaAves[id]!=null){
-            s+=listaAves[id].getHistoricoPostura();
+            s+="ID: "+listaAves[id].getIdAve()+"\n"+listaAves[id].getHistoricoPostura();
         }
         return s;
     }
@@ -54,6 +62,20 @@ public class GalinheiroPostura {
             }
         }
     
+    public String listarAves(){
+        String s="";
+        int x=0;
+        while(listaAves[x]!=null){
+            s+="\n";
+            s+=listaAves[x].toString();
+            x++;
+        }
+        if(s.equals("")){
+            s+="Não existem aves";
+        }
+        return s;
+    }
+    
     public String status(){
         String s="";
         int x=0;
@@ -63,12 +85,16 @@ public class GalinheiroPostura {
         }
         return s;
     }
+
+    public int getUltimaave() {
+        return ultimaave;
+    }
     
-    /*PARA FINALIZAR
+
     @Override
     public String toString() {
         return "----------------------------------------\n"
                 + "Galinheiro id:" + this.getIdGalinheiro() + 
-                "\nLista de aves:" + this.listarAves() + "\nQuantidade de Ovos: " + this.getQtdOvos();
-    } */
+                "\nLista de aves:" + this.listarAves() + "\nQuantidade total de Ovos: " + this.getQtdOvos();
+    } 
 }

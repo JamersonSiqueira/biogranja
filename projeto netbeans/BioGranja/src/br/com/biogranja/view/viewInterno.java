@@ -9,10 +9,12 @@ import br.com.biogranja.control.controlCarregamentos;
 import br.com.biogranja.control.controlFuncionarios;
 import br.com.biogranja.control.controlGalinheiro;
 import br.com.biogranja.model.AveCorte;
+import br.com.biogranja.model.AvePostura;
 import br.com.biogranja.model.Aves;
 import br.com.biogranja.model.Carga;
 import br.com.biogranja.model.Funcionario;
 import br.com.biogranja.model.GalinheiroCorte;
+import br.com.biogranja.model.GalinheiroPostura;
 import br.com.biogranja.model.Gestor;
 import java.awt.Color;
 import java.util.Date;
@@ -29,6 +31,7 @@ controlFuncionarios funcionarioDAO = new controlFuncionarios();
 controlGalinheiro galinheiroDAO = new controlGalinheiro();
 Gestor g;
 int idcorte=0;
+int idpostura=0;
     /**
      * Creates new form viewInterno
      */
@@ -53,6 +56,15 @@ int idcorte=0;
         AveCorte ave = new AveCorte(av);
         gc.addAve(ave);
         galinheiroDAO.cadastrarCorte(gc);
+        GalinheiroPostura gp = new GalinheiroPostura(idpostura);
+        idpostura++;
+        Aves ap = new Aves("Postura",4.300);
+        AvePostura avep = new AvePostura(ap);
+        avep.setColocandoOvo(true);
+        avep.adicionarHistorico("["+dt.toString()+"] - Colocou 3 ovos");
+        gp.addAve(avep);
+        gp.setQtdOvos(3);
+        galinheiroDAO.cadastrarPostura(gp);
     }
     public String converterListaCarga(Aves lista[]){
         String txt="";
@@ -108,13 +120,13 @@ int idcorte=0;
         btnBuscarCorte = new javax.swing.JButton();
         txtGranjaCorte = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
+        btnRelatorio = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jButton13 = new javax.swing.JButton();
-        jButton14 = new javax.swing.JButton();
-        jButton15 = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
+        txtGranjaPostura = new javax.swing.JTextField();
+        btnListarPostura = new javax.swing.JButton();
+        btnExcluirPostura = new javax.swing.JButton();
+        btnBuscarPostura = new javax.swing.JButton();
+        btnCriarPostura = new javax.swing.JButton();
         btnMoverCorte = new javax.swing.JButton();
         panMoverCorte = new javax.swing.JPanel();
         btnConfirmarCorte = new javax.swing.JButton();
@@ -122,15 +134,14 @@ int idcorte=0;
         idCargaCorte = new javax.swing.JTextField();
         btnMoverPostura = new javax.swing.JButton();
         panMoverPostura = new javax.swing.JPanel();
-        jButton17 = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
+        btnConfirmarPostura = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        idCargaPostura = new javax.swing.JTextField();
         jSeparator4 = new javax.swing.JSeparator();
         jSeparator5 = new javax.swing.JSeparator();
         btnAddRacao = new javax.swing.JButton();
         btnAbate = new javax.swing.JButton();
+        btnStatusPostura = new javax.swing.JButton();
         jSeparator2 = new javax.swing.JSeparator();
         painelLogin = new javax.swing.JPanel();
         btnAccGest = new javax.swing.JButton();
@@ -268,7 +279,7 @@ int idcorte=0;
                         .addComponent(jLabel12)
                         .addGap(152, 152, 152)
                         .addComponent(jLabel13)
-                        .addGap(91, 91, 91))))
+                        .addGap(76, 76, 76))))
         );
         painelFuncLayout.setVerticalGroup(
             painelFuncLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -386,19 +397,39 @@ int idcorte=0;
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Relatórios");
 
-        jButton8.setText("Exibir Relatório");
+        btnRelatorio.setText("Exibir Relatório");
 
         jLabel14.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel14.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel14.setText("Granjas de Postura");
 
-        jButton13.setText("Lista Granjas");
+        btnListarPostura.setText("Lista Granjas");
+        btnListarPostura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnListarPosturaActionPerformed(evt);
+            }
+        });
 
-        jButton14.setText("Excluir Granja");
+        btnExcluirPostura.setText("Excluir Granja");
+        btnExcluirPostura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExcluirPosturaActionPerformed(evt);
+            }
+        });
 
-        jButton15.setText("Buscar Granja");
+        btnBuscarPostura.setText("Buscar Granja");
+        btnBuscarPostura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarPosturaActionPerformed(evt);
+            }
+        });
 
-        jButton16.setText("Criar Granja");
+        btnCriarPostura.setText("Criar Granja");
+        btnCriarPostura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCriarPosturaActionPerformed(evt);
+            }
+        });
 
         btnMoverCorte.setText("Mover Cargas");
         btnMoverCorte.addActionListener(new java.awt.event.ActionListener() {
@@ -455,10 +486,12 @@ int idcorte=0;
 
         panMoverPostura.setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton17.setText("Mover");
-
-        jLabel17.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel17.setText("Granja");
+        btnConfirmarPostura.setText("Mover");
+        btnConfirmarPostura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfirmarPosturaActionPerformed(evt);
+            }
+        });
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel18.setText("ID Carga");
@@ -469,32 +502,25 @@ int idcorte=0;
             panMoverPosturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panMoverPosturaLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(panMoverPosturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panMoverPosturaLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButton17))
-                    .addGroup(panMoverPosturaLayout.createSequentialGroup()
-                        .addGroup(panMoverPosturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel18))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
-                        .addGroup(panMoverPosturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addComponent(idCargaPostura, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panMoverPosturaLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnConfirmarPostura)
+                .addGap(29, 29, 29))
         );
         panMoverPosturaLayout.setVerticalGroup(
             panMoverPosturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panMoverPosturaLayout.createSequentialGroup()
+            .addGroup(panMoverPosturaLayout.createSequentialGroup()
+                .addGap(6, 6, 6)
                 .addGroup(panMoverPosturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(idCargaPostura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel18))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(panMoverPosturaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel17)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnConfirmarPostura)
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         jSeparator4.setForeground(new java.awt.Color(0, 0, 0));
@@ -514,6 +540,13 @@ int idcorte=0;
         btnAbate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAbateActionPerformed(evt);
+            }
+        });
+
+        btnStatusPostura.setText("Status Postura");
+        btnStatusPostura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnStatusPosturaActionPerformed(evt);
             }
         });
 
@@ -541,7 +574,7 @@ int idcorte=0;
                             .addGroup(painelGestorLayout.createSequentialGroup()
                                 .addGap(49, 49, 49)
                                 .addGroup(painelGestorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton8)
+                                    .addComponent(btnRelatorio)
                                     .addGroup(painelGestorLayout.createSequentialGroup()
                                         .addGap(26, 26, 26)
                                         .addComponent(jLabel5))))
@@ -579,20 +612,22 @@ int idcorte=0;
                                 .addGap(18, 18, 18)
                                 .addGroup(painelGestorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(painelGestorLayout.createSequentialGroup()
-                                        .addComponent(btnMoverPostura)
+                                        .addGroup(painelGestorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(btnMoverPostura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnStatusPostura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(panMoverPostura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(painelGestorLayout.createSequentialGroup()
-                                        .addGroup(painelGestorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addComponent(jButton13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton14))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(painelGestorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jButton15, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(btnListarPostura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnExcluirPostura, javax.swing.GroupLayout.DEFAULT_SIZE, 103, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(painelGestorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(btnCriarPostura, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(btnBuscarPostura, javax.swing.GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)))
                                     .addGroup(painelGestorLayout.createSequentialGroup()
                                         .addGap(54, 54, 54)
-                                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                        .addComponent(txtGranjaPostura, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(painelGestorLayout.createSequentialGroup()
                                 .addGap(64, 64, 64)
                                 .addComponent(jLabel14)))))
@@ -611,15 +646,15 @@ int idcorte=0;
                             .addGroup(painelGestorLayout.createSequentialGroup()
                                 .addComponent(jLabel14)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtGranjaPostura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(painelGestorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton13)
-                                    .addComponent(jButton16))
+                                    .addComponent(btnListarPostura)
+                                    .addComponent(btnCriarPostura))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(painelGestorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jButton14)
-                                    .addComponent(jButton15)))
+                                    .addComponent(btnExcluirPostura)
+                                    .addComponent(btnBuscarPostura)))
                             .addGroup(painelGestorLayout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -649,7 +684,7 @@ int idcorte=0;
                                 .addGap(20, 20, 20)
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton8))
+                                .addComponent(btnRelatorio))
                             .addGroup(painelGestorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelGestorLayout.createSequentialGroup()
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -661,9 +696,14 @@ int idcorte=0;
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelGestorLayout.createSequentialGroup()
                                     .addGap(12, 12, 12)
                                     .addGroup(painelGestorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(btnMoverPostura)
-                                        .addComponent(panMoverPostura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(panMoverCorte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                        .addComponent(panMoverCorte, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(panMoverPostura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(painelGestorLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnMoverPostura)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnStatusPostura)))
+                        .addGap(5, 5, 5))
                     .addComponent(jSeparator5)))
         );
 
@@ -726,9 +766,9 @@ int idcorte=0;
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelLoginLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel19)
                         .addComponent(jLabel7))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painelLoginLayout.createSequentialGroup()
                         .addGroup(painelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -968,6 +1008,63 @@ int idcorte=0;
         }
     }
     }//GEN-LAST:event_btnAbateActionPerformed
+
+    private void btnStatusPosturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnStatusPosturaActionPerformed
+    if(galinheiroDAO.buscarPostura(Integer.parseInt(txtGranjaPostura.getText())) == null){
+        JOptionPane.showMessageDialog(null, "Granja inexistente!");
+    } else {
+        GalinheiroPostura gp = galinheiroDAO.buscarPostura(Integer.parseInt(txtGranjaPostura.getText()));
+    JOptionPane.showMessageDialog(null,gp.status());
+    }
+    }//GEN-LAST:event_btnStatusPosturaActionPerformed
+
+    private void btnListarPosturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListarPosturaActionPerformed
+    JOptionPane.showMessageDialog(null, galinheiroDAO.listarPostura());   
+    }//GEN-LAST:event_btnListarPosturaActionPerformed
+
+    private void btnCriarPosturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCriarPosturaActionPerformed
+        GalinheiroPostura gp = new GalinheiroPostura(idpostura);
+        idpostura++;
+        galinheiroDAO.cadastrarPostura(gp);
+    }//GEN-LAST:event_btnCriarPosturaActionPerformed
+
+    private void btnBuscarPosturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarPosturaActionPerformed
+    if(galinheiroDAO.buscarPostura(Integer.parseInt(txtGranjaPostura.getText())) == null){
+        JOptionPane.showMessageDialog(null, "Granja inexistente!");
+    } else {
+        JOptionPane.showMessageDialog(null, "Granja encontrada! \n"
+                +galinheiroDAO.buscarPostura(Integer.parseInt(txtGranjaPostura.getText())).toString());
+    }
+    }//GEN-LAST:event_btnBuscarPosturaActionPerformed
+
+    private void btnExcluirPosturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirPosturaActionPerformed
+        if(txtGranjaPostura.getText().equals("")){
+            JOptionPane.showMessageDialog(null, "Insira um ID!");
+        } else {
+        if(galinheiroDAO.removerPostura(galinheiroDAO.buscarPostura(Integer.parseInt(txtGranjaPostura.getText())))==true){
+            JOptionPane.showMessageDialog(null, "Granja Removida !");
+        } else {
+            JOptionPane.showMessageDialog(null, "Granja não localizada !");
+            }
+        }
+    }//GEN-LAST:event_btnExcluirPosturaActionPerformed
+
+    private void btnConfirmarPosturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfirmarPosturaActionPerformed
+        if(carga.buscarCarga(Integer.parseInt(idCargaPostura.getText()))==null){
+            JOptionPane.showMessageDialog(null, "Carga Inexistente !");
+        } else if (galinheiroDAO.buscarPostura(Integer.parseInt(txtGranjaPostura.getText()))==null){
+            JOptionPane.showMessageDialog(null, "Galinheiro Inexistente !");
+        } else {
+        Carga c = carga.buscarCarga(Integer.parseInt(idCargaPostura.getText()));
+        GalinheiroPostura g = galinheiroDAO.buscarPostura(Integer.parseInt(txtGranjaPostura.getText()));
+        g.addCarga(c);
+        galinheiroDAO.atualizarPostura(g);
+        Aves[] listaPostura = new Aves[60];
+        c.setListaCorte(listaPostura);
+        carga.atualizarCarga(c);
+        JOptionPane.showMessageDialog(null, "Carga Adicionada !");
+        }
+    }//GEN-LAST:event_btnConfirmarPosturaActionPerformed
     
     private int random(){
         Random random = new Random();
@@ -1017,26 +1114,28 @@ int idcorte=0;
     private javax.swing.JButton btnAtt;
     private javax.swing.JButton btnBuscarCorte;
     private javax.swing.JButton btnBuscarFunc;
+    private javax.swing.JButton btnBuscarPostura;
     private javax.swing.JButton btnConfirmarCorte;
+    private javax.swing.JButton btnConfirmarPostura;
     private javax.swing.JButton btnCriarCorte;
     private javax.swing.JButton btnCriarFunc;
+    private javax.swing.JButton btnCriarPostura;
     private javax.swing.JButton btnExcluirCorte;
     private javax.swing.JButton btnExcluirFunc;
+    private javax.swing.JButton btnExcluirPostura;
     private javax.swing.JButton btnFecharFunc;
     private javax.swing.JButton btnListarCorte;
     private javax.swing.JButton btnListarFunc;
+    private javax.swing.JButton btnListarPostura;
     private javax.swing.JButton btnMoverCorte;
     private javax.swing.JButton btnMoverPostura;
     private javax.swing.JButton btnNovaAveCorte;
     private javax.swing.JButton btnNovaAvePostura;
     private javax.swing.JButton btnNovaCarga;
+    private javax.swing.JButton btnRelatorio;
+    private javax.swing.JButton btnStatusPostura;
     private javax.swing.JTextField idCargaCorte;
-    private javax.swing.JButton jButton13;
-    private javax.swing.JButton jButton14;
-    private javax.swing.JButton jButton15;
-    private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JTextField idCargaPostura;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1044,7 +1143,6 @@ int idcorte=0;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
@@ -1060,9 +1158,6 @@ int idcorte=0;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
     private javax.swing.JSeparator jSeparator5;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField7;
     private javax.swing.JPanel painelFunc;
     private javax.swing.JPanel painelGestor;
     private javax.swing.JPanel painelLogin;
@@ -1072,6 +1167,7 @@ int idcorte=0;
     private javax.swing.JScrollPane scrPanListaPostura;
     private javax.swing.JTextField txtFunc;
     private javax.swing.JTextField txtGranjaCorte;
+    private javax.swing.JTextField txtGranjaPostura;
     private javax.swing.JTextField txtID;
     private javax.swing.JLabel txtIDCarga;
     private javax.swing.JTextArea txtListaCorte;

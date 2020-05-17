@@ -35,13 +35,11 @@ Cliente c = new Cliente("João da Silva Brandão","Rua Eustácio nº 36\n"
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToggleButton1 = new javax.swing.JToggleButton();
         panAcessoCliente = new javax.swing.JPanel();
         btnCompra = new javax.swing.JButton();
         btnCadastro = new javax.swing.JButton();
         txtTitulo = new javax.swing.JTextField();
-
-        jToggleButton1.setText("jToggleButton1");
+        jLabel19 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -64,13 +62,15 @@ Cliente c = new Cliente("João da Silva Brandão","Rua Eustácio nº 36\n"
 
         txtTitulo.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
         txtTitulo.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtTitulo.setText("Biogranja - Acesso de Clientes");
+        txtTitulo.setText("Acesso de Clientes");
         txtTitulo.setBorder(null);
         txtTitulo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtTituloActionPerformed(evt);
             }
         });
+
+        jLabel19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/biogranja/images/Granja_small.png"))); // NOI18N
 
         javax.swing.GroupLayout panAcessoClienteLayout = new javax.swing.GroupLayout(panAcessoCliente);
         panAcessoCliente.setLayout(panAcessoClienteLayout);
@@ -81,18 +81,24 @@ Cliente c = new Cliente("João da Silva Brandão","Rua Eustácio nº 36\n"
                 .addGroup(panAcessoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 167, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panAcessoClienteLayout.createSequentialGroup()
-                .addContainerGap(111, Short.MAX_VALUE)
-                .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(103, 103, 103))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(panAcessoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panAcessoClienteLayout.createSequentialGroup()
+                        .addComponent(jLabel19)
+                        .addGap(226, 226, 226))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panAcessoClienteLayout.createSequentialGroup()
+                        .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 368, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(86, 86, 86))))
         );
         panAcessoClienteLayout.setVerticalGroup(
             panAcessoClienteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panAcessoClienteLayout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(btnCompra, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
                 .addComponent(btnCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -103,11 +109,17 @@ Cliente c = new Cliente("João da Silva Brandão","Rua Eustácio nº 36\n"
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panAcessoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(panAcessoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(panAcessoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(panAcessoCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -170,7 +182,7 @@ Cliente c = new Cliente("João da Silva Brandão","Rua Eustácio nº 36\n"
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCadastro;
     private javax.swing.JButton btnCompra;
-    private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JPanel panAcessoCliente;
     private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables

@@ -93,7 +93,7 @@ public class controlGalinheiro {
         
         return null;
    }
-        public String listarpostura(){
+        public String listarPostura(){
         String s="";
         for(int y = 0; y < listapostura.size(); y++)
         s+=listapostura.get(y).toString()+"\n";    

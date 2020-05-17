@@ -25,14 +25,29 @@ public class AvePostura {
         this.colocandoOvo = colocandoOvo;
     }
 
-    public String[] getHistoricoPostura() {
-        return historicoPostura;
+    public String getHistoricoPostura() {
+        String s = "";
+        for(int x=0;x<controlhist;x++){
+            s+=historicoPostura[x]+"\n";
+        }
+        return s;
     }
 
     public void adicionarHistorico(String hist) {
-        historicoPostura[controlhist] = hist;
+        historicoPostura[controlhist] = hist+"\n";
         controlhist++;
     }
     
+        @Override
+    public String toString() {
+        String s="";
+        if(this.getHistoricoPostura()==""){
+            s+="Histórico Vazio";
+        } else {
+           s+=this.getHistoricoPostura(); 
+        }
+        return "Ave: "+ idAve + ", Está pondo?: " + this.isColocandoOvo()
+                +"\nHistórico postura: "+s;
+    }
     
 }
