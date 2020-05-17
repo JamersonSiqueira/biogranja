@@ -681,8 +681,8 @@ DecimalFormat df = new DecimalFormat("#,##0.00");
         panDadosCartao.setVisible(true);
         panCartaoAprovado.setVisible(true);
         JOptionPane.showMessageDialog(null, "Pedido "+codpedido+ " realizado com sucesso!\nAguarde a entrega no endereço informado");
-        }
         this.dispose();
+         }
     }//GEN-LAST:event_btnConcluirActionPerformed
 
     private void btnCartaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCartaoActionPerformed
