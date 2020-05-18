@@ -48,9 +48,14 @@ int idpostura=0;
     
     public void inicializar(){
         Date dt = new Date();
-        Funcionario f = new Funcionario(007,"Matheus Daltro",dt,"senha");
+        Funcionario f = new Funcionario(7,"Matheus Daltro",dt,"senha");
         funcionarioDAO.cadastrarFuncionario(f);
+        Funcionario f2 = new Funcionario(8,"Willian Bastos",dt,"senha");
+        funcionarioDAO.cadastrarFuncionario(f2);
+        Funcionario f3 = new Funcionario(9,"Artivis",dt,"senha");
+        funcionarioDAO.cadastrarFuncionario(f3);
         g = new Gestor(10,"Adenilson Jamerson",dt,"senha");
+        g = new Gestor(11,"Willian Bastos",dt,"senha");
         getContentPane().setBackground(Color.WHITE);
         GalinheiroCorte gc = new GalinheiroCorte(idcorte);
         idcorte++;
