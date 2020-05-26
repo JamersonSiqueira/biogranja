@@ -1,0 +1,18 @@
+(Como o sistema foi feito todo com variáveis internas, alguns cadastros podem não ser transferidas de uma janela para a outra, então, estarei fornecendo esses presets).
+
+---- Cliente ----
+CPF: 12345678900
+
+Se cadastrar pela tela de cadastro, e ao finalizar clicar em "Acessar", o cliente cadastrado é transferido pra tela de compras.
+
+---- Funcionários ----
+id: 7 // Matheus Daltro
+id: 8 // Willian Bastos
+id: 9 // Artivis
+
+---- Gerentes ----
+id: 10 // Adenilson Jamerson
+id: 11 // Willian Bastos
+
+Senha padrão de funcionários/gestores : senha
+------------------------------------------------------------------------------------------------------------------------
